@@ -125,4 +125,4 @@ if __name__ == "__main__":
         elif instruction[0] == "exit":
             break
         else:
-            print("bruh")
+            print(f"No known axis named {instruction[0]}")
