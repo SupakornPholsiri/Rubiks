@@ -46,6 +46,12 @@ class Rubik:
     
     def get_right(self):
         return self.cube[5]
+    
+    def check_win(self):
+        for side in self.cube:
+            if not np.all(side == np.ravel(side)[0]):
+                return False
+        return True
         
     def rotate(self, axis: str, axis_column: int, direction: int):
 
@@ -126,3 +132,7 @@ if __name__ == "__main__":
             break
         else:
             print(f"No known axis named {instruction[0]}")
+
+        if rubik.check_win():
+            print("You win")
+            break
