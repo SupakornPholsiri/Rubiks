@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 class Rubik:
     
@@ -52,6 +53,15 @@ class Rubik:
             if not np.all(side == np.ravel(side)[0]):
                 return False
         return True
+    
+    def randomize(self, num_moves):
+        axises = ["front", "left", "top"]
+        for _ in range(num_moves):
+            axis = random.choice(axises)
+            axis_column = random.randint(0, 2)
+            direction = random.randint(1, 3)  # You can adjust the range as needed
+            print(axis, axis_column, direction)
+            self.rotate(axis, axis_column, direction)
         
     def rotate(self, axis: str, axis_column: int, direction: int):
 
@@ -123,6 +133,7 @@ class Rubik:
 
 if __name__ == "__main__":
     rubik = Rubik()
+    rubik.randomize(30)
     while(True):
         print(rubik.cube)
         instruction = input("Rotate: ").split()
